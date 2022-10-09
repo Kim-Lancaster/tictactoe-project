@@ -1,0 +1,23 @@
+{
+    "name": "tic-tac-toe",
+    "version": "1.0.0",
+    "description": "",
+    "main": "scoreBoard.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node backend.js",
+        "devStart": "nodemon backend.js"
+    },
+    "author": "Kim.Lancaster",
+    "license": "",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.2",
+        "express": "^4.18.1",
+        "mongodb": "^4.9.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    }
+}

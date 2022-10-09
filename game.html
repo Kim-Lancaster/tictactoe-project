@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c239ea7dcb.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./resources/css/game.css">
+    <title>Tic Tac Toe!</title>
+</head>
+<body>
+    <div class="whole-page grid-container">
+        <h1>Tic Tac Toe!</h1>
+        <div class="left grid-container">
+            <div class="player1">
+                <h3>Player 1<br>Score:</h3>
+                <h3 id="player1-score"></h3>
+            </div>
+            <div class="player2">
+                <h3>Player 2<br>Score:</h3>
+                <h3 id="player2-score"></h3>
+            </div>
+        </div>
+        <div class="game-board grid-container">
+            <div class="grid-item top right-border bottom-border" id="1"></div>
+            <div class="grid-item top right-border bottom-border" id="2"></div>
+            <div class="grid-item top bottom-border" id="3"></div>
+            <div class="grid-item middle right-border bottom-border" id="4"></div>
+            <div class="grid-item middle right-border bottom-border" id="5"></div>
+            <div class="grid-item middle bottom-border" id="6"></div>
+            <div class="grid-item bottom right-border" id="7"></div>
+            <div class="grid-item bottom right-border" id="8"></div>
+            <div class="grid-item bottom" id="9"></div>
+        </div>
+        <div class="right grid-container"><!--THE SCOREBOARD-->
+            <h3>Top Scores!</h3>
+            <div class="ranked-scores" id="ranked-scores">
+                <div id="0"></div>
+                <div id="1"></div>
+                <div id="2"></div>
+                <div id="3"></div>
+                <div id="4"></div>
+                <div id="5"></div>
+                <div id="6"></div>
+                <div id="7"></div>
+                <div id="8"></div>
+                <div id="9"></div>
+            </div>
+        </div><!--SCOREBOARD END-->
+        <div class="footer grid-container">
+            <div class="coin">
+                <p>Who goes first?</p>
+                <div class="who-goes-first" id="who-goes-first">
+                    <!-- <button class="coin-flip" id="coin-flip">Coin Flip!</button> -->
+                </div>
+            </div>
+            <div class="symbols-and-flip">
+                <div class="symbol">
+                    <p>Player 1 is <span id="player1-symbol"></span></p>
+                    <p>Player 2 is <span id="player2-symbol"></span></p>
+                </div>
+                <div>
+                    <button id="flip-symbols">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>  
+            <div class="winner">
+                <p>Winner:</p>
+                <p id="the-winner">?</p>
+            </div>
+            <div class="play-again">
+                <button id="play-again">Play Again</button>
+                <button id="create-record">Add Score</button>
+            </div>
+        </div>
+    </div>
+    <script src="./resources/js/game.mjs" type="module"></script>
+    <script src="./resources/js/scoreBoard.mjs" type="module"></script>
+</body>
+</html>

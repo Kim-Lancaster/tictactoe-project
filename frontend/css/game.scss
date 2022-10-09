@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+
+//VARIABLES
+$backgroundColor: rgb(15, 24, 24);
+$color: rgb(58, 99, 99);
+$buttonBgColor: rgb(192, 220, 247);
+$font: 'Fascinate', cursive;
+
+//MIXINS
+@mixin flex-rules($direction, $justify, $align, $wrap: no-wrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+
+@mixin border-and-radius($thickness, $radius: 15px){
+    border: $thickness solid $color;
+    border-radius: $radius;
+}
+
+@mixin playerScoreBox {
+    @include border-and-radius(2px);
+    width: 100%;
+    height: 100%;
+}
+
+//GLOBAL
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+    font-size: 20px;
+    scroll-behavior: smooth;
+    @media(max-width: 1100px){
+        font-size: 100%;
+    }
+    @media(max-width: 900px){
+        font-size: 90%;
+    }
+    @media(max-width: 750px){
+        font-size: 80%;
+    }
+    @media(max-width: 666px){
+        font-size: 70%;
+    }
+    color: $color;
+}
+
+body {
+    background-color: $backgroundColor;
+    
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+button {
+    cursor: pointer;
+    background-color: $buttonBgColor;
+    width: 8rem;
+    height: 1.5rem;
+    border-radius: 10px;
+    letter-spacing: 3px;
+    font-size: .75rem;
+    @media(max-width: 600px){
+        font-size: 1rem;
+        width: 10rem;
+        height: 2rem;
+    }
+}
+
+i {
+    font-size: 1rem;
+}
+
+//SWEETALERT2 STYLES
+.swal2-popup {
+    background-color: $color;
+    color: $backgroundColor;
+    width: 30rem;
+    height: 15rem;
+    .swal2-confirm,
+    .swal2-cancel {
+        height: 100%;
+        background-color: $backgroundColor;
+        color: $color;
+    }
+    .swal2-validation-message {
+        background-color: $backgroundColor;
+        color: $color;
+    }
+    .swal2-error {
+        margin: 1% auto;
+        justify-content: center;
+    }
+}
+
+// MAIN PAGE
+.whole-page{
+    display: grid;
+    grid-template-areas:
+        "h1-top h1-top h1-top h1-top h1-top"
+        "left-side game-board game-board game-board right-side"
+        "bottom-info bottom-info bottom-info bottom-info bottom-info";
+        @media(max-width: 600px) {
+            grid-template-areas:
+                "h1-top h1-top h1-top h1-top h1-top"
+                "player-score player-score player-score player-score player-score"
+                "board board board board board"
+                "scoreboard scoreboard scoreboard scoreboard scoreboard"
+                "bottom bottom bottom bottom bottom"
+                "bottom bottom bottom bottom bottom";
+        }
+}
+
+
+// THE TITLE
+h1 {
+    grid-area: h1-top;
+    justify-self: center;
+    align-self: center;
+    font-size: 8rem;
+}
+
+// The LEFT SIDE - PLAYER CURRENT SCORES
+.left {
+    grid-area: left-side;
+    @include flex-rules(column, center, center);
+    @media(max-width: 600px) {
+        grid-area: player-score;
+        @include flex-rules(row, space-evenly, center);
+    }
+    .player1,
+    .player2 {
+       h3 {
+            width: 10rem; 
+            height: 6rem;
+            @media(max-width: 1100px){
+                text-align: center;
+            }
+        }
+        @media(max-width: 600px) {
+            @include flex-rules(row, center, center)
+        }
+        .player1-score,
+        .player2-score {
+            @include playerScoreBox();
+        }
+    }
+    
+}
+
+// THE MIDDLE - THE BOARD
+.game-board {
+    // THE WHOLE BOARD
+    grid-area: game-board;
+    @media(max-width: 600px) {
+        grid-area: board;
+    }
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    min-width: 26rem;
+    min-height: 26rem;
+    margin-right: 6%;
+    @include border-and-radius(3px);
+    overflow: hidden;
+    // THE SQUARES
+    .grid-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+    }
+    .right-border {
+        border-right: 4px solid $color
+    }
+    .bottom-border {
+        border-bottom: 4px solid $color;
+    }
+    .grid-item:hover {
+        background-color: $color;
+        color: $backgroundColor;
+        cursor: pointer;
+    } 
+}
+
+//THE RIGHT SIDE - THE SCOREBOARD API
+.right {
+    grid-area: right-side;
+    @include flex-rules(column, flex-start, center);
+    justify-self: center;
+    @media(max-width: 600px) {
+        grid-area: scoreboard;
+        width: 80%;
+        height: 10rem;
+    } 
+    h3 {
+        padding-bottom: 3%;
+        @media(max-width: 950px){
+            text-align: center;
+        }
+    }
+    .ranked-scores {
+        @include flex-rules(column, space-evenly, center);
+        height: 80%;
+        width: 100%;
+        @include border-and-radius(2px);
+        font-size: 1.25rem;
+        overflow: hidden;
+        @media(max-width: 600px) {
+            @include flex-rules(row, center, center);
+        }
+        div {
+            @include flex-rules(row, center, center);
+            word-spacing: 20px;
+            width: 100%;
+            height: 100%;
+            @media(max-width: 600px) {
+                text-align: center;
+                font-size: 1.25rem;
+            }
+            &:nth-child(odd){
+                color: $backgroundColor;
+                background-color: $color;
+
+            }
+        }
+    }
+}
+
+// THE BOTTOM - THE BUTTONS
+.footer{
+    grid-area: bottom-info;
+    @include flex-rules(row, space-evenly, center, wrap);
+    height: 10rem;
+    @media(max-width: 600px) {
+        grid-area: bottom;
+        height: 100%;
+    }
+    .coin {
+        @include flex-rules(row, center, center, wrap);
+        font-size: 1.5rem;
+        gap: 10%;
+        @media(max-width: 1300px){
+            @include flex-rules(column, space-between, center);
+            text-align: center
+        }
+        @media(max-width: 600px) {
+            @include flex-rules(row, space-evenly, center, wrap);
+            flex: 50%;
+            height: 50%;
+        }
+        p {
+            font-size: 1.75rem;
+            margin-right: 20px;
+            // @media(max-width: 1300px){
+            //     padding: 3%;
+            // }
+        }
+        .who-goes-first{
+            width: 8.5rem;
+            height: 2rem;
+            justify-self: center;
+            padding-top: 1%;
+            div {
+                display: none;
+            }
+        }
+    }
+    .symbols-and-flip{
+        @include flex-rules(row, center, center);
+        gap: 10%;
+        width: 20%;
+        height: 100%;
+        @media(max-width: 1300px){
+            @include flex-rules(column, center, center);
+        }
+        @media(max-width: 600px) {
+            @include flex-rules(row, center, center, wrap);
+            flex: 50%;
+            height: 50%;
+        }
+        .symbol {
+            text-align: center;
+            p{
+                font-size: 1.25rem;
+                @media(max-width: 600px){
+                    font-size: 1.5rem;
+                }    
+            }
+            span {
+                font-size: 1.25rem;
+            }
+            
+        }
+        button {
+            width: 4rem;
+        }
+        
+    }
+    .winner {
+        @include flex-rules(row, center, center, wrap);
+        font-size: 1.5rem;
+        
+        @media(max-width: 1300px){
+            @include flex-rules(column, center, center);
+            padding: 1%;
+        }
+        @media(max-width: 600px) {
+            @include flex-rules(row, space-evenly, center);
+            flex: 50%;
+            height: 50%;
+        }
+        p {
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+    }
+    .play-again {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        @media(max-width: 600px) {
+            @include flex-rules(row, space-evenly, center);
+            flex: 50%;
+            height: 50%;
+        }
+    }
+}
+
