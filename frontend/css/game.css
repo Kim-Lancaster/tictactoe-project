@@ -34,6 +34,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  * {
+    font-size: 65%;
+  }
+}
+
 body {
   background-color: #0f1818;
 }
@@ -115,6 +121,14 @@ h1 {
   font-size: 8rem;
 }
 
+@media (max-width: 600px) {
+  h1 {
+    font-size: 7rem;
+    word-wrap: normal;
+    text-align: center;
+  }
+}
+
 .left {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -154,6 +168,7 @@ h1 {
             align-items: center;
     -ms-flex-wrap: no-wrap;
         flex-wrap: no-wrap;
+    padding-left: 5%;
   }
 }
 
@@ -202,6 +217,8 @@ h1 {
 }
 
 .game-board {
+  border: 3px solid #3a6363;
+  border-radius: 15px;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
@@ -219,14 +236,14 @@ h1 {
   min-width: 26rem;
   min-height: 26rem;
   margin-right: 6%;
-  border: 3px solid #3a6363;
-  border-radius: 15px;
   overflow: hidden;
 }
 
 @media (max-width: 600px) {
   .game-board {
     grid-area: board;
+    min-width: 30rem;
+    min-height: 30rem;
   }
 }
 
@@ -394,13 +411,14 @@ h1 {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 10rem;
+  height: 12rem;
 }
 
 @media (max-width: 600px) {
   .footer {
     grid-area: bottom;
     height: 100%;
+    padding: 5% 0 10% 0;
   }
 }
 
@@ -637,6 +655,12 @@ h1 {
   }
 }
 
+@media (max-width: 600px) and (max-width: 600px) {
+  .footer .winner {
+    margin-top: 4%;
+  }
+}
+
 .footer .winner p {
   font-size: 2rem;
   margin-right: 20px;
@@ -661,13 +685,13 @@ h1 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -677,6 +701,10 @@ h1 {
         -ms-flex: 50%;
             flex: 50%;
     height: 50%;
+    margin-top: 3%;
+  }
+  .footer .play-again #create-record {
+    margin-top: 3%;
   }
 }
 /*# sourceMappingURL=game.css.map */

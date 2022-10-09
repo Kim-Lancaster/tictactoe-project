@@ -1,11 +1,8 @@
-import { playerOneScore, playerTwoScore } from './game.mjs';
 // //Grabbing the scoreboard and all the individual divs inside
 const scoreBoardInnerDiv = document.querySelectorAll('#ranked-scores div')
 
 // //Grabbing 'Add Score' button
 const createRecord = document.getElementById("create-record");
-
-
 ////////////////////////GET REQUEST/////////////////////////////////////
 const currentScores = fetch(`http://localhost:3000/getScores`)
 .then(response => {return response.json()})
@@ -16,6 +13,7 @@ const currentScores = fetch(`http://localhost:3000/getScores`)
 
 //Puts the scores from the DB up in the score section
 const populateScores = (data) => {
+    
     scoreBoardInnerDiv.forEach((spot, i) => {
         spot.innerHTML = `${data[i].rank} ${data[i].name} ${data[i].score}`;
     })
@@ -32,6 +30,8 @@ createRecord.addEventListener('click', () => {
 const checkIfScoreIsHigh = async() => {
     let scores = await currentScores;
     let highScore;
+    let playerOneScore = document.getElementById('player1-score').innerHTML;
+    let playerTwoScore = document.getElementById('player2-score').innerHTML;
     playerOneScore > playerTwoScore ? highScore = playerOneScore : highScore = playerTwoScore;
     for(let i = 0; i < 10; i++){
         if(highScore >= scores[i].score || highScore >= scores[i].score){

@@ -46,6 +46,9 @@ $font: 'Fascinate', cursive;
     @media(max-width: 666px){
         font-size: 70%;
     }
+    @media(max-width: 600px){
+        font-size: 65%;
+    }
     color: $color;
 }
 
@@ -124,6 +127,11 @@ h1 {
     justify-self: center;
     align-self: center;
     font-size: 8rem;
+    @media(max-width: 600px){
+        font-size: 7rem;
+        word-wrap: normal;
+        text-align: center;
+    }
 }
 
 // The LEFT SIDE - PLAYER CURRENT SCORES
@@ -133,6 +141,7 @@ h1 {
     @media(max-width: 600px) {
         grid-area: player-score;
         @include flex-rules(row, space-evenly, center);
+        padding-left: 5%;
     }
     .player1,
     .player2 {
@@ -157,10 +166,8 @@ h1 {
 // THE MIDDLE - THE BOARD
 .game-board {
     // THE WHOLE BOARD
+    @include border-and-radius(3px);
     grid-area: game-board;
-    @media(max-width: 600px) {
-        grid-area: board;
-    }
     display: grid;
     align-self: center;
     justify-self: center;
@@ -169,8 +176,12 @@ h1 {
     min-width: 26rem;
     min-height: 26rem;
     margin-right: 6%;
-    @include border-and-radius(3px);
     overflow: hidden;
+    @media(max-width: 600px) {
+        grid-area: board;
+        min-width: 30rem;
+        min-height: 30rem;
+    }
     // THE SQUARES
     .grid-item{
         display: flex;
@@ -239,10 +250,11 @@ h1 {
 .footer{
     grid-area: bottom-info;
     @include flex-rules(row, space-evenly, center, wrap);
-    height: 10rem;
+    height: 12rem;
     @media(max-width: 600px) {
         grid-area: bottom;
         height: 100%;
+        padding: 5% 0 10% 0;
     }
     .coin {
         @include flex-rules(row, center, center, wrap);
@@ -260,9 +272,6 @@ h1 {
         p {
             font-size: 1.75rem;
             margin-right: 20px;
-            // @media(max-width: 1300px){
-            //     padding: 3%;
-            // }
         }
         .who-goes-first{
             width: 8.5rem;
@@ -317,6 +326,9 @@ h1 {
             @include flex-rules(row, space-evenly, center);
             flex: 50%;
             height: 50%;
+            @media(max-width: 600px){
+                margin-top: 4%;
+            }
         }
         p {
             font-size: 2rem;
@@ -329,9 +341,13 @@ h1 {
         justify-content: space-evenly;
         height: 100%;
         @media(max-width: 600px) {
-            @include flex-rules(row, space-evenly, center);
+            @include flex-rules(column, center, center);
             flex: 50%;
             height: 50%;
+            margin-top: 3%;
+            #create-record{
+                margin-top: 3%;
+            }
         }
     }
 }

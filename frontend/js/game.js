@@ -44,8 +44,8 @@ let playerTwoSymbol = "O";
 
 //Misc
 let tilesClicked = 0;
-export let playerOneScore = 0;
-export let playerTwoScore = 0;
+let playerOneScore = 0;
+let playerTwoScore = 0;
 
 
 
@@ -228,7 +228,6 @@ const highlightWinningRow = (arr) => {
     }
 }
 //////////////END GAME LOGIC///////////////////////////////////
-
 
 //////////////A.I. LOGIC BELOW - Incomplete - Just a place holder///////////////////////////
 //Get an array of all unmarked squares
